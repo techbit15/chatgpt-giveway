@@ -1,7 +1,33 @@
-document.getElementById("giveaway-form").addEventListener("submit", function (e) {
-  e.preventDefault();
-  const name = this.querySelector("input[type='text']").value;
-  const email = this.querySelector("input[type='email']").value;
-  alert(`Thank you, ${name}! Your entry has been submitted.`);
-  this.reset();
+document.addEventListener("DOMContentLoaded", function () {
+  let countdown = 10;
+  const countdownSpan = document.getElementById("countdown");
+  const countdownBox = document.getElementById("countdown-box");
+  const shareBox = document.getElementById("share-box");
+  const shareBtn = document.getElementById("facebookShareBtn");
+  const warningMessage = document.getElementById("warning-message");
+
+  const interval = setInterval(() => {
+    countdown--;
+    countdownSpan.textContent = countdown;
+
+    if (countdown <= 0) {
+      clearInterval(interval);
+      countdownBox.style.display = "none";
+      shareBox.style.display = "block";
+    }
+  }, 1000);
+
+  let clickCount = 0;
+
+  shareBtn.addEventListener("click", function () {
+    clickCount++;
+
+    if (clickCount < 10) {
+      warningMessage.style.display = "block";
+    } else {
+      warningMessage.textContent = "✅ Thanks for sharing!";
+      warningMessage.style.color = "green";
+      warningMessage.style.display = "block";
+    }
+  });
 });
