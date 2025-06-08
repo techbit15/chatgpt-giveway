@@ -1,1 +1,1 @@
-# hatgpt-giveway
+# Chatgpt-giveway
