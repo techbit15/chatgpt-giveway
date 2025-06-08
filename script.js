@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let countdown = 10;
+  let countdown = 25;
   const countdownSpan = document.getElementById("countdown");
   const countdownBox = document.getElementById("countdown-box");
   const shareBox = document.getElementById("share-box");
@@ -30,4 +30,15 @@ document.addEventListener("DOMContentLoaded", function () {
       warningMessage.style.display = "block";
     }
   });
+});
+document.getElementById("copyBtn").addEventListener("click", function () {
+    const url = "https://chatgptgiveway.netlify.app/";
+    navigator.clipboard.writeText(url).then(() => {
+        document.getElementById("copySuccess").style.display = "block";
+        setTimeout(() => {
+            document.getElementById("copySuccess").style.display = "none";
+        }, 3000);
+    }).catch((err) => {
+        alert("Failed to copy the link.");
+    });
 });
